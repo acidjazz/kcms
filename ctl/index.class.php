@@ -6,24 +6,17 @@ class index {
 
   public function index() {
 
-    global $cfg;
+    $kcms = new \lib\kcms();
 
-    $project = 'talko';
-    $jsonfile = $cfg['projects']['talko']['json'];
-    $root = $cfg['projects']['talko']['root'];
+    $data = $kcms->getConfig('talko');
 
-    $json = json_decode(file_get_contents($jsonfile));
+    $flat = $kcms->flatten($data);
 
-    $data = $json->cfg;
-
-    $ocms = new \lib\ocms();
-
-    $flat = $ocms->flatten($data);
-
-    \lib\jade::c('index', ['flat' => $flat, 'adds' => $ocms->adds]);
-
+    $new = $kcms->expand($flat);
+    hpr($new);
     hpr($flat);
-    hpr($ocms->adds);
+
+    \lib\jade::c('index', ['flat' => $flat, 'adds' => $kcms->adds]);
 
   }
 

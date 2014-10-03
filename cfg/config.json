@@ -5,9 +5,9 @@
       "description": "Modify settings"
     },
 
-    "path": "/var/www/ocms/",
-    "url": "http://ocms/",
-    "domain": "ocms",
+    "path": "/var/www/kcms/",
+    "url": "http://kcms/",
+    "domain": "kcms",
     "stylus": "true",
 
     "kdb": {
@@ -25,7 +25,7 @@
     "mongo": {
       "triton": {
         "host": "mongodb://localhost:27017/",
-        "db": "ocms",
+        "db": "kcms",
         "cols": [ "history"]
       }
     },

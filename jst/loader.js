@@ -2,8 +2,8 @@ var Loader;
 
 Loader = {
   scripts: {
-    jst: [],
-    jst_lib: []
+    jst_lib: [],
+    jst: []
   },
   i: function(callback) {
     this.browser = this.searchString(this.dataBrowser) || "Other";
@@ -106,6 +106,7 @@ Loader = {
         paths.push('/' + folder.replace('_', '/') + '/' + script + '.js');
       }
     }
+    console.log(paths);
     floop = function(arr) {
       return Loader.load(paths[i], false, function() {
         if (++i === paths.length) {
@@ -125,6 +126,7 @@ Loader = {
   },
   load: function(script, initiate, complete) {
     var el;
+    console.log("#loading " + script);
     el = document.createElement('script');
     el.type = 'text/javascript';
     el.src = script;

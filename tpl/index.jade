@@ -5,10 +5,10 @@ block content
 
     .header this is the header
 
-    each value, key in self.flat
-      form(data-id=key)
+    form#form
+      each value, key in self.flat
         .field
-          .label #{key.replace(/->/g, ' ').replace('cfg','')}
+          .label !{key.replace(/::/g, '<span>::</span>').replace('cfg::','')}
 
           .value
             if (value.length > 100)
@@ -19,7 +19,10 @@ block content
             input(type='submit', value='Submit')
           .clear
 
-    .footer this is the footer
-block prepend script
+    .footer this is the foor
+
+block postscript
   script(type='text/javascript').
-    console.log('whats up');
+    function loadercomplete() {
+      Loader.load('/jst/kcms.js', 'Kcms');
+    }

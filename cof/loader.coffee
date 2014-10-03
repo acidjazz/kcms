@@ -1,7 +1,7 @@
 
 Loader =
 
-  scripts: {jst: [], jst_lib: []}
+  scripts: {jst_lib: [], jst: []}
 
   i: (callback) ->
 
@@ -62,6 +62,7 @@ Loader =
     paths = []
     i = 0
     paths.push '/' + folder.replace('_','/') + '/' + script + '.js' for script in scripts for folder, scripts of list
+    console.log paths
 
     floop = (arr) ->
       Loader.load paths[i], false, ->
@@ -75,6 +76,7 @@ Loader =
       complete()
 
   load: (script, initiate, complete) ->
+    console.log "#loading #{script}"
 
     el = document.createElement 'script'
     el.type = 'text/javascript'
