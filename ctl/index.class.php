@@ -6,9 +6,9 @@ class index {
 
   public function index() {
 
-    $kcms = new \lib\kcms();
+    $kcms = new \lib\kcms('talko');
 
-    $data = $kcms->getConfig('talko');
+    $data = $kcms->getConfig();
 
     $flat = $kcms->flatten($data);
 

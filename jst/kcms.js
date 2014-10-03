@@ -9,19 +9,46 @@ Kcms = {
     $('#form').submit(Kcms.submit);
     return console.log('Kcms.handlers()');
   },
-  submit: function() {
+  data: function(complete) {
     var data;
     data = {};
-    $('.field > .value > input, .field > .value > textarea').each(function(i, el) {
+    return $('.field > .value > input, .field > .value > textarea').each(function(i, el) {
       var key, value;
       el = $(el);
       key = el.attr('name');
       value = el.val();
       return data[key] = value;
     }).promise().done(function() {
-      console.log(data);
+      return complete(data) != null;
+    });
+  },
+  diff: function(data, result) {
+    return Kcms.data(function(data) {
+      return $.post('/diff/', data).always(function() {
+        return console.log('diff post complete');
+      }).success(function(response) {
+        if (Object.keys(response.data).length === 0) {
+          return result(false);
+        } else {
+          return result(response.data);
+        }
+      }).fail(function(response) {
+        return console.log('failure', response);
+      });
+    });
+  },
+  submit: function() {
+    Kcms.data(function(data) {
+      return Kcms.diff(data, function(diff) {
+        return console.log('diff', diff);
+      });
+    });
+    return false;
+  },
+  update: function() {
+    Kcms.data(function(data) {
       return $.post('/update/', data).always(function() {
-        return console.log('post complete');
+        return console.log('update post complete');
       }).success(function(response) {
         return console.log(response);
       }).fail(function(response) {

@@ -5,16 +5,21 @@ namespace lib;
 class kcms {
 
   public $adds = [];
+  public $project = false;
 
   CONST oseparator = '::';
   CONST aseparator = ';;';
 
-  public function getConfig($project) {
+  public function __construct($project) {
+    $this->project = $project;
+  }
+
+  public function getConfig() {
 
     global $cfg;
 
-    $jsonfile = $cfg['projects'][$project]['json'];
-    $root = $cfg['projects'][$project]['root'];
+    $jsonfile = $cfg['projects'][$this->project]['json'];
+    $root = $cfg['projects'][$this->project]['root'];
 
     $json = json_decode(file_get_contents($jsonfile));
 
@@ -24,7 +29,7 @@ class kcms {
 
   public function update($request) {
 
-    $old = $this->getConfig('talko');
+    $old = $this->getConfig($this->project);
     $diff = $this->diff($request, $this->flatten($old));
     $new = $this->expand($request);
 
