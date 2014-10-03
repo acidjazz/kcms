@@ -62,6 +62,8 @@ class api {
     $status = 200;
     if (!$success) {
       $status = 400;
+      $data = false;
+      $result = 'internal failure';
     }
 
     http_response_code($status);
@@ -77,6 +79,7 @@ class api {
     echo json_encode($return, JSON_PRETTY_PRINT);
 
     return true;
+    exit;
 
   }
 

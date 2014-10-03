@@ -20,12 +20,19 @@ class kcms {
 
     return $json->cfg;
 
+  }
 
+  public function update($request) {
+
+    $old = $this->getConfig('talko');
+    $diff = $this->diff($request, $this->flatten($old));
+    $new = $this->expand($request);
+
+    return ['succes' => true, 'diff' => $diff, 'new' => $new];
 
   }
 
   public function flatten($object, $flat=[], $array=false, $dimension=false) {
-
 
     foreach ($object as $key=>$value) {
 

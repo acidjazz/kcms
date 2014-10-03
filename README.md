@@ -1,7 +1,7 @@
 
 CMS JSON Project
 ===
-Dynamically generated form based on associative multi-dimensional JSON data
+Dynamically generated form based on associative multi-dimensional JSON data.  This is a tool to only be used privately by the client allowed to modify the given data, there is no sanitization or bleaching of the form whatsoever (yet).
 
 
 ### Requirements (advised to install in order)

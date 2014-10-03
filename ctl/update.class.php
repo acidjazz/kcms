@@ -7,15 +7,9 @@ class update extends \lib\api {
   public function index() {
 
     $kcms = new \lib\kcms();
+    $result = $kcms->update($_REQUEST);
 
-    $data = $kcms->getConfig('talko');
-    $flat = $kcms->flatten($data);
-
-    //$diff = $kcms->diff($flat, $_REQUEST);
-
-    //$new = $kcms->expand($_REQUEST);
-
-    $this->result(true, 'success', ['flat' => $flat, 'request' => $_REQUEST]);
+    $this->result(true, 'success', ['diff' => $result['diff'], 'new' => $result['new']]);
 
   }
 
