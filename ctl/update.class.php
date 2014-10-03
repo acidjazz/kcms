@@ -11,10 +11,11 @@ class update extends \lib\api {
     $data = $kcms->getConfig('talko');
     $flat = $kcms->flatten($data);
 
-    $diff = $kcms->diff($flat, $_REQUEST);
-    $new = $kcms->expand($_REQUEST);
+    //$diff = $kcms->diff($flat, $_REQUEST);
 
-    $this->result(true, 'success', ['diff' => $diff, 'update' => $new]);
+    //$new = $kcms->expand($_REQUEST);
+
+    $this->result(true, 'success', ['flat' => $flat, 'request' => $_REQUEST]);
 
   }
 

@@ -11,10 +11,9 @@ class index {
     $data = $kcms->getConfig('talko');
 
     $flat = $kcms->flatten($data);
-
     $new = $kcms->expand($flat);
+
     hpr($new);
-    hpr($flat);
 
     \lib\jade::c('index', ['flat' => $flat, 'adds' => $kcms->adds]);
 
