@@ -1,0 +1,55 @@
+.diff
+  position fixed
+  top 2.5em
+  width 40em
+  left 50%
+  margin-left -20em
+  min-height 40em
+  border 0.1em solid c_black2
+  background-color c_grey1
+  padding 1em
+  > .title
+    font-size 1.5em
+    text-align center
+    padding-bottom 1em
+  > .body
+    background-color white
+    min-height 20em
+    border-top 0.1em solid c_black2
+
+    > .right
+      float right
+      > .change > .value
+        background-color rgba(c_status_green, 0.2)
+        padding 0.5em
+        > span
+          background-color rgba(c_status_green, 0.5)
+    > .left
+      float left
+      > .change > .value
+        background-color rgba(c_status_red, 0.2)
+        padding 0.5em
+        > span
+          background-color rgba(c_status_red, 0.5)
+    > .right, > .left
+      width 20em
+    > .right > .change, > .left > .change
+      border-bottom 0.1em solid c_black2
+      > .label
+        font-family segoe_normal
+        padding 0.5em
+        > span
+          color c_grey3
+  > .actions > .action
+      cursor pointer
+      background-color white
+      font-family segoe_normal
+      float right
+      padding 0.5em 1em
+      margin 0.5em 0 0 0.5em
+      &:hover
+        background-color c_grey2
+  &.on
+    display block
+  &.off
+    display none

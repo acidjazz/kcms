@@ -76,7 +76,7 @@ Loader =
       complete()
 
   load: (script, initiate, complete) ->
-    console.log "#loading #{script}"
+    console.log "loading #{script} (#{initiate})"
 
     el = document.createElement 'script'
     el.type = 'text/javascript'

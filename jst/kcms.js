@@ -28,9 +28,9 @@ Kcms = {
         return console.log('diff post complete');
       }).success(function(response) {
         if (Object.keys(response.data).length === 0) {
-          return result(false);
+          return Status.i(false, 'No changes found', 3);
         } else {
-          return result(response.data);
+          return Diff.i(response.data);
         }
       }).fail(function(response) {
         return console.log('failure', response);

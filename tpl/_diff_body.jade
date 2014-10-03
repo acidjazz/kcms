@@ -1,0 +1,12 @@
+
+.right
+  for value, key in self.diff
+    .change
+      .label &nbsp;
+      .value !{value.after.replace(value.diff.before, '<span>'+value.diff.before+'</span>')}
+.left
+  for value, key in self.diff
+    .change
+      .label !{key.replace(/::/g, '<span>::</span>').replace(/;;/g, '<span>;;</span>')}
+      .value !{value.before.replace(value.diff.after, '<span>'+value.diff.after+'</span>')}
+

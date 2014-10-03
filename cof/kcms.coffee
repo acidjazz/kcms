@@ -29,7 +29,10 @@ Kcms =
         .always ->
           console.log 'diff post complete'
         .success (response) ->
-          if Object.keys(response.data).length is 0 then result(false) else result(response.data)
+          if Object.keys(response.data).length is 0
+            Status.i false, 'No changes found', 3
+          else
+            Diff.i response.data
         .fail (response) ->
           console.log 'failure', response
 

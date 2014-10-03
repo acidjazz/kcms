@@ -1,0 +1,63 @@
+.status
+  position fixed
+  top 2.5em
+  width 30em
+  left 50%
+  margin-left -15em
+  background-color c_black2
+  color c_white
+  transition transform 0.2s ease-in, opacity 0.2s ease-out
+  transform-origin 50% 50%
+  &.on
+    opacity 1
+    transform perspective(1000px) rotateX(0deg)
+  &.off
+    opacity 0
+    transform perspective(1000px) rotateX(-90deg)
+  &.success
+    > .label.error
+      display none
+    > .label.success
+      display block
+    > .label > svg > path
+      fill c_status_green
+  &.error
+    > .label.error
+      display block
+    > .label.success
+      display none
+    > .label > svg
+      fill c_status_red
+  
+  &:hover > .close
+    opacity 1
+  > .label
+    float left
+    width 2em
+    height 2em
+    margin 0.5em
+    &.on
+      display block
+    &.off
+      display none
+    > svg
+      width inherit
+      height inherit
+  > .copy
+    line-height 2em
+    font-size 1.2em
+    line-height 2.5em
+    text-align center
+  > .close
+    float right
+    width 1em
+    height 1em
+    margin 0.25em
+    cursor pointer
+    opacity 0
+    transition opacity 0.2s linear
+    > svg
+      width inherit
+      height inherit
+      > path
+        fill c_grey1

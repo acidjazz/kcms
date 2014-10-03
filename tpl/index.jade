@@ -21,8 +21,11 @@ block content
 
     .footer this is the footer
 
+
 block postscript
   script(type='text/javascript').
     function loadercomplete() {
+      Loader.load('/jst/diff.js');
+      Loader.load('/jst/status.js');
       Loader.load('/jst/kcms.js', 'Kcms');
     }

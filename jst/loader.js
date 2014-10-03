@@ -126,7 +126,7 @@ Loader = {
   },
   load: function(script, initiate, complete) {
     var el;
-    console.log("#loading " + script);
+    console.log("loading " + script + " (" + initiate + ")");
     el = document.createElement('script');
     el.type = 'text/javascript';
     el.src = script;

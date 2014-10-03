@@ -7,6 +7,8 @@ vendor-prefixes ?= webkit moz o ms official
 @import _fonts
 @import _vars
 
+@import status
+@import diff
 
 .clear
   clearfix()
@@ -56,12 +58,30 @@ body
           float right
           margin 1em -0.1em -0.1em 0
           background-color c_white
+          cursor pointer
+          &:hover
+            background-color c_grey2
+            > input
+              background-color c_grey2
           > input
+            cursor pointer
             font-size 1em
-            font -family segoe_normal
+            font-family segoe_normal
             border none
             outline none
             padding 0.5em 1em
             background-color c_white
            
+.fade
+  position fixed
+  top 0
+  left 0
+  width 100%
+  height 100em
+  background linear-gradient(bottom left, rgba(c_grey1, 0.9), rgba(c_grey2, 0.9))
+  &.on
+    display block
+  &.off
+    display none
+
 
