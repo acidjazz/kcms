@@ -30,7 +30,7 @@ Kcms =
           console.log 'diff post complete'
         .success (response) ->
 
-          if Object.keys(response.data).length is 0
+          if Object.keys(response.data.diff).length is 0
             Status.i false, 'No changes found', 3
           else
             Diff.i response.data, (result) ->

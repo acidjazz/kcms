@@ -13,6 +13,8 @@ block content
   .container
 
     form#form
+      .submit
+        input(type='submit', value='Submit')
       each value, key in self.flat
         .field
           .label !{key.replace(/::/g, '<span>::</span>').replace(/;;/g, '<span>;;</span>')}
@@ -22,8 +24,6 @@ block content
               textarea(name=key) #{value}
             else
               input(type='text',value=value,name=key)
-          .submit
-            input(type='submit', value='Submit')
           .clear
 
     .footer this is the footer

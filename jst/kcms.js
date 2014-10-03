@@ -27,7 +27,7 @@ Kcms = {
       return $.post('/diff/', data).always(function() {
         return console.log('diff post complete');
       }).success(function(response) {
-        if (Object.keys(response.data).length === 0) {
+        if (Object.keys(response.data.diff).length === 0) {
           return Status.i(false, 'No changes found', 3);
         } else {
           return Diff.i(response.data, function(result) {

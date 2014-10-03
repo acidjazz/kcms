@@ -49,6 +49,28 @@ body
     padding 2em
 
     > form
+      > .submit
+        position fixed
+        top 4em
+        right 0em
+        float right
+        background-color c_black2
+        cursor pointer
+        color c_white
+        transition transform 0.2s linear
+        transform translate(1em, 0em)
+        &:hover
+          transform translate(0em, 0em)
+        > input
+          cursor pointer
+          color c_white
+          font-size 1em
+          font-family segoe_normal
+          border none
+          outline none
+          padding 0.5em 2em
+          background-color c_black2
+
       > .field
         background-color c_grey1
         margin 1em 0
@@ -72,24 +94,7 @@ body
           > textarea
             height 5em
 
-        > .submit
-          float right
-          margin 1em -0.1em -0.1em 0
-          background-color c_white
-          cursor pointer
-          &:hover
-            background-color c_grey2
-            > input
-              background-color c_grey2
-          > input
-            cursor pointer
-            font-size 1em
-            font-family segoe_normal
-            border none
-            outline none
-            padding 0.5em 1em
-            background-color c_white
-           
+               
 .fade
   position fixed
   top 0
