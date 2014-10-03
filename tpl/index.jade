@@ -8,7 +8,7 @@ block content
     form#form
       each value, key in self.flat
         .field
-          .label !{key.replace(/::/g, '<span>::</span>').replace('cfg::','')}
+          .label !{key.replace(/::/g, '<span>::</span>').replace(/;;/g, '<span>;;</span>')}
 
           .value
             if (value.length > 100)
@@ -19,7 +19,7 @@ block content
             input(type='submit', value='Submit')
           .clear
 
-    .footer this is the foor
+    .footer this is the footer
 
 block postscript
   script(type='text/javascript').
