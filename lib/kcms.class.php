@@ -19,8 +19,6 @@ class kcms {
     global $cfg;
 
     $jsonfile = $cfg['projects'][$this->project]['json'];
-    $root = $cfg['projects'][$this->project]['root'];
-
     $json = json_decode(file_get_contents($jsonfile));
 
     return $json->cfg;
@@ -32,6 +30,32 @@ class kcms {
     $old = $this->getConfig($this->project);
     $diff = $this->diff($request, $this->flatten($old));
     $new = $this->expand($request);
+
+    $history = new \mdl\history();
+    $history->project = $this->project;
+    $history->old = $old;
+    $history->new = $new;
+    $history->diff = $diff;
+    $history->save();
+
+    $root = new \stdClass;
+    $root->cfg = $new;
+    $json = json_encode($root, JSON_PRETTY_PRINT);
+
+    global $cfg;
+
+    // safety
+    $date = date("c");
+    copy($cfg['projects'][$this->project]['json'], $cfg['projects'][$this->project]['json'].'.'.$date.'.old');
+
+    file_put_contents($cfg['projects'][$this->project]['json'], $json);
+
+    // run any scripts
+    $folder = $cfg['projects'][$this->project]['folder'];
+    foreach ($cfg['projects'][$this->project]['scripts'] as $script) {
+      chdir($folder);
+      exec($script);
+    }
 
     return ['succes' => true, 'diff' => $diff, 'new' => $new];
 

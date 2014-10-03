@@ -1,26 +1,30 @@
 var Diff;
 
 Diff = {
-  i: function(data) {
-    Diff.populate(data);
+  result: false,
+  i: function(data, result) {
+    Diff.result = result;
+    $('.diff > .body').html(data.html);
     _.on('.fade', '.diff');
     return Diff.handlers();
   },
   handlers: function() {
-    return $('.diff > .actions > .action').on('click', Diff.action);
+    return $('.diff > .actions > .action').click(Diff.action);
   },
   action: function() {
     var t;
     t = $(this);
-    console.log(t.attr('class'));
     if (t.hasClass('cancel')) {
-      return _.off('.fade', '.diff');
+      Diff.result(false);
+      Diff.d();
+    }
+    if (t.hasClass('confirm')) {
+      Diff.result(true);
+      return Diff.d();
     }
   },
-  populate: function(data) {
-    var body;
-    console.log(data);
-    body = $('.diff > .body');
-    return body.html(data.html);
+  d: function() {
+    _.off('.fade', '.diff');
+    return $('.diff > .actions > .action').unbind('click', Diff.action);
   }
 };

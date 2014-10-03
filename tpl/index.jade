@@ -1,9 +1,16 @@
 
 extends layout
 block content
-  .container
+  .header
+    .client
+      include ../svg/talko.svg
+    .oc
+      img(src='/img/outcast.png')
+    .clear
 
-    .header this is the header
+
+
+  .container
 
     form#form
       each value, key in self.flat

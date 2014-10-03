@@ -29,10 +29,18 @@ Kcms =
         .always ->
           console.log 'diff post complete'
         .success (response) ->
+
           if Object.keys(response.data).length is 0
             Status.i false, 'No changes found', 3
           else
-            Diff.i response.data
+            Diff.i response.data, (result) ->
+              if result
+                Status.i true, 'Updating..'
+                Kcms.update()
+              else
+                Status.i false, 'Changes Reverted', 3
+                $('#form')[0].reset()
+
         .fail (response) ->
           console.log 'failure', response
 
@@ -42,12 +50,13 @@ Kcms =
       Kcms.diff data, (diff) ->
         console.log 'diff', diff
     return false
+
   update: ->
 
     Kcms.data (data) ->
       $.post '/update/', data
         .always ->
-          console.log 'update post complete'
+          Status.i true, 'Updated', 3
         .success (response) ->
           console.log response
         .fail (response) ->

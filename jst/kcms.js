@@ -30,7 +30,15 @@ Kcms = {
         if (Object.keys(response.data).length === 0) {
           return Status.i(false, 'No changes found', 3);
         } else {
-          return Diff.i(response.data);
+          return Diff.i(response.data, function(result) {
+            if (result) {
+              Status.i(true, 'Updating..');
+              return Kcms.update();
+            } else {
+              Status.i(false, 'Changes Reverted', 3);
+              return $('#form')[0].reset();
+            }
+          });
         }
       }).fail(function(response) {
         return console.log('failure', response);
@@ -48,7 +56,7 @@ Kcms = {
   update: function() {
     Kcms.data(function(data) {
       return $.post('/update/', data).always(function() {
-        return console.log('update post complete');
+        return Status.i(true, 'Updated', 3);
       }).success(function(response) {
         return console.log(response);
       }).fail(function(response) {

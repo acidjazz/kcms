@@ -18,7 +18,10 @@
     "projects": {
       "talko": {
         "json": "/var/www/talko/cfg/config.json",
-        "root": "copy"
+        "folder": "/var/www/talko",
+        "scripts": [
+          "./scr/jade.sh"
+        ]
       }
     },
 
