@@ -1,0 +1,25 @@
+
+extends layout
+block content
+  .container
+
+    .header this is the header
+
+    each value, key in self.flat
+      form(data-id=key)
+        .field
+          .label #{key.replace(/->/g, ' ').replace('cfg','')}
+
+          .value
+            if (value.length > 100)
+              textarea(name=key) #{value}
+            else
+              input(type='text',value=value,name=key)
+          .submit
+            input(type='submit', value='Submit')
+          .clear
+
+    .footer this is the footer
+block prepend script
+  script(type='text/javascript').
+    console.log('whats up');

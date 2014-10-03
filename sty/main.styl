@@ -1,0 +1,65 @@
+
+vendor-prefixes ?= webkit moz o ms official
+
+@import vendor
+
+@import mixins
+@import _fonts
+@import _vars
+
+
+.clear
+  clearfix()
+
+body
+  font-size 16px
+  font-family segoe_light
+  background-color c_grey1
+  background linear-gradient(bottom left, c_grey1, c_grey2)
+  background-repeat no-repeat
+  background-attachment fixed
+  color c_black
+
+  > .container
+    margin 2em
+    min-width 20em
+    min-height 40em
+    background-color c_white
+    overflow hidden
+    padding 2em
+
+    > form
+      > .field
+        background-color c_grey1
+        margin 1em 0
+        border 0.1em solid c_grey3
+        > .label
+          padding 0.5em 1em
+          font-family segoe_normal
+        > .value
+          background-color c_white
+          padding 0.25em 0.5em
+          > input, > textarea
+            font-size 1em
+            font-family segoe_light
+            border none
+            outline none
+            padding 0.25em 0.5em
+            min-width 15em
+            width 99%
+          > textarea
+            height 5em
+
+        > .submit
+          float right
+          margin 1em -0.1em -0.1em 0
+          background-color c_white
+          > input
+            font-size 1em
+            font -family segoe_normal
+            border none
+            outline none
+            padding 0.5em 1em
+            background-color c_white
+           
+

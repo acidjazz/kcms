@@ -1,0 +1,40 @@
+{
+  "cfg": {
+    "meta": {
+      "title": "Outcast CMS",
+      "description": "Modify settings"
+    },
+
+    "path": "/var/www/ocms/",
+    "url": "http://ocms/",
+    "domain": "ocms",
+    "stylus": "true",
+
+    "kdb": {
+      "debug": "true",
+      "handler": "true"
+    },
+
+    "projects": {
+      "talko": {
+        "json": "/var/www/talko/cfg/config.json",
+        "root": "copy"
+      }
+    },
+
+    "mongo": {
+      "triton": {
+        "host": "mongodb://localhost:27017/",
+        "db": "ocms",
+        "cols": [ "history"]
+      }
+    },
+
+    "node": {
+      "path": "/usr/lib/node_modules/"
+    }
+
+  }
+
+}
+
