@@ -166,14 +166,21 @@ class kcms {
 
     $diffs = [];
 
+
     foreach ($old as $key=>$value) {
+
+      $dmp = new diff_match_patch();
+      $dmp_diffs = $dmp->diff_main($old[$key], $new[$key]);
+
+      $string = $this->stringDiff($old[$key], $new[$key]);
       if ($new[$key] != $old[$key]) {
         $diffs[$key] = [
           'before' => $old[$key],
           'after' => $new[$key],
+          'diffs' => $dmp_diffs,
           'diff' => [
-            'before' => $this->stringDiff($old[$key], $new[$key])[0],
-            'after' => $this->stringDiff($old[$key], $new[$key])[1]
+            'before' => $string[0],
+            'after' => $string[1]
           ]
         ];
       }
